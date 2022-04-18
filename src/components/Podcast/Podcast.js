@@ -1,12 +1,17 @@
-import { PodcastStyled } from './Podcast.styled'
-import { TitleStyled } from './Podcast.styled'
-import { ImageStyled } from './Podcast.styled'
-import { AuthorStyled } from './Podcast.styled'
-import { InfoWrapperStyled } from './Podcast.styled'
+import { useNavigate } from 'react-router-dom'
+import {
+  PodcastStyled,
+  TitleStyled,
+  ImageStyled,
+  AuthorStyled,
+  InfoWrapperStyled,
+} from './Podcast.styled'
 
 const PodcastComponent = (props) => {
+  const navigate = useNavigate()
+
   return (
-    <PodcastStyled>
+    <PodcastStyled onClick={() => navigate(`/podcast/${props.id}`)}>
       <ImageStyled alt='podcast logo' src={props.image}></ImageStyled>
       <InfoWrapperStyled>
         <TitleStyled title={props.podcastName}>{props.podcastName}</TitleStyled>
