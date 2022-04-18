@@ -7,13 +7,14 @@ export const PodcastStyled = styled.div`
   height: 10rem;
   padding: 0 1rem;
   position: relative;
-  width: 15rem;
+  width: 25rem;
 `
-export const InfoWrapperStyled= styled.div`
-display: flex;
-flex-direction: column;
-height: 100%;
-justify-content: flex-end;
+
+export const InfoWrapperStyled = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: flex-end;
 `
 
 export const TitleStyled = styled.p`
@@ -42,5 +43,5 @@ export const ImageStyled = styled.img`
   position: absolute;
   right: 0;
   top: -30%;
-  width: 50%;
+  width: 25%;
 `
