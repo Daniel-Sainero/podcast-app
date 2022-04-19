@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import useFetch from '../apiService/useFetch'
-import Podcast from '../components/Podcast/Podcast'
-import CounterComponent from '../components/Counter/Counter'
+import useFetch from '../../apiService/useFetch'
+import Podcast from '../../components/Podcast/Podcast'
+import CounterComponent from '../../components/Counter/Counter'
 import {
   HomeStyled,
   SearchContainerStyled,
