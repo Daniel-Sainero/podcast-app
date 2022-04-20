@@ -9,13 +9,13 @@ import {
 } from './home.styled'
 
 const Home = () => {
-  const { data } = useFetch(
-    'https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json'
-  )
+  const podcastURI = 'https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json'
+  const { data } = useFetch(podcastURI)
+  const podcasts = data?.feed?.entry
   const [query, setQuery] = useState('')
 
   // eslint-disable-next-line array-callback-return
-  const podcastList = data.filter((podcast) => {
+  const podcastList = podcasts?.filter((podcast) => {
     if (query === '') {
       return podcast
     } else if (

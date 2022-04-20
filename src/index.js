@@ -2,9 +2,9 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import './index.css'
-import Home from './views/home'
-import PodcastDetail from './views/podcast-detail'
-import PodcastChapter from './views/podcast-chapter'
+import Home from './views/home/home';
+import PodcastEpisodes from './views/episodes/podcast-episodes';
+import PodcastDetail from './views/detail/podcast-detail';
 import HeaderComponent from './components/Header/Header'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
@@ -17,12 +17,12 @@ root.render(
         <Route
           exact
           path='/podcast/:podcastId'
-          element={<PodcastDetail />}
+          element={<PodcastEpisodes />}
         ></Route>
         <Route
           exact
           path='/podcast/:podcastId/episode/:episodeId'
-          element={<PodcastChapter />}
+          element={<PodcastDetail />}
         ></Route>
         <Route path='*' element={<Home />} />
       </Routes>
