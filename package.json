@@ -19,7 +19,7 @@
   },
   "scripts": {
     "start:dev": "react-scripts start",
-    "start:prod": "react-scripts start"
+    "start:prod": "react-scripts build"
   },
   "resolutions": {
     "//": "See https://github.com/facebook/create-react-app/issues/11773",
