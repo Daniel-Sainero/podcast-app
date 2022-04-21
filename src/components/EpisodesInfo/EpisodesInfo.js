@@ -1,5 +1,4 @@
 import React from 'react'
-import Parser from 'rss-parser'
 import {
   LogoWrapperStyled,
   InfoStyled,
@@ -7,36 +6,26 @@ import {
   AuthorStyled,
   DescriptionStyled,
 } from './EpisodesInfo.styled'
-import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
 import DOMPurify from 'dompurify'
 
+
 const EpisodesInfoComponent = (props) => {
-  const CORS_PROXY = 'https://api.allorigins.win/raw?url='
-  const [podcast, setPodcast] = useState(null)
-
-  useEffect(() => {
-    let parser = new Parser()
-
-    const fetchData = async () => {
-      const feed = await parser.parseURL(CORS_PROXY + props.feedUrl)
-      setPodcast(feed)
-    }
-    fetchData()
-  }, [props.feedUrl])
+  const navigate = useNavigate();
 
   return (
-    podcast && (
+    props.podcast && (
     <InfoStyled>
-      <LogoWrapperStyled>
-        <img alt='podcast logo' src={podcast?.image?.url} />
+      <LogoWrapperStyled onClick={() => navigate(-1)} >
+        <img alt='podcast logo' src={props.podcast?.image?.url} />
       </LogoWrapperStyled>
-      <TitleStyled>{podcast?.title}</TitleStyled>
-      <AuthorStyled> by {podcast?.itunes?.author}</AuthorStyled>
+      <TitleStyled onClick={() => navigate(-1)}>{props.podcast?.title}</TitleStyled>
+      <AuthorStyled onClick={() => navigate(-1)}> by {props.podcast?.itunes?.author}</AuthorStyled>
       <DescriptionStyled>
         <span>Description:</span>
         <div
           dangerouslySetInnerHTML={{
-            __html: DOMPurify.sanitize(podcast?.description),
+            __html: DOMPurify.sanitize(props.podcast?.description),
           }}
         ></div>
       </DescriptionStyled>

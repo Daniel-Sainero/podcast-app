@@ -1,6 +1,5 @@
 import React from 'react'
-import Parser from 'rss-parser'
-import { useState, useEffect } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
 
 import {
   TitleStyled,
@@ -12,18 +11,8 @@ import {
 } from './EpisodesList.styled'
 
 const EpisodesListComponent = (props) => {
-  const CORS_PROXY = 'https://api.allorigins.win/raw?url='
-  const [podcast, setPodcast] = useState(null)
-
-  useEffect(() => {
-    let parser = new Parser()
-
-    const fetchData = async () => {
-      const feed = await parser.parseURL(CORS_PROXY + props.feedUrl)
-      setPodcast(feed)
-    }
-    fetchData()
-  }, [props.feedUrl])
+  const navigate = useNavigate()
+  const params = useParams()
 
   const dateParser = (date) => {
     var a = new Date(date)
@@ -34,31 +23,44 @@ const EpisodesListComponent = (props) => {
     return time
   }
 
+  const goToDetails = (item) => {
+    localStorage.setItem('podcast', JSON.stringify(item))
+    navigate(`/podcast/${params.podcastId}/episode/${item.guid}`)
+  }
   return (
-    podcast && (
-      <EpisodesListWrapperStyled>
-        <TitleStyled>Episodes: {podcast?.items.length}</TitleStyled>
-        <TableStyled>
-          <HeaderStyled>
-            <p className='title'>Title</p>
-            <p className='date'>Date</p>
-            <p className='duration'>Duration</p>
-          </HeaderStyled>
-          <PodcastsList>
-            {podcast?.items.map((item, i) => (
-              <EpisodeStyled
-                key={i}
-                style={{ backgroundColor: i % 2 ? 'white' : '#f6f6f6' }}
-              >
-                <p className='title'>{item.title}</p>
-                <p className='date'>{dateParser(item.pubDate)} </p>
-                <p className='duration'> {item.itunes.duration}</p>
-              </EpisodeStyled>
-            ))}
-          </PodcastsList>
-        </TableStyled>
-      </EpisodesListWrapperStyled>
-    )
+    <>
+      {props.podcast && (
+        <EpisodesListWrapperStyled>
+          <TitleStyled>Episodes: {props.podcast?.items.length}</TitleStyled>
+          <TableStyled>
+            <HeaderStyled>
+              <p className='title'>Title</p>
+              <p className='date'>Date</p>
+              <p className='duration'>Duration</p>
+            </HeaderStyled>
+            <PodcastsList>
+              {props.podcast?.items.map((item, i) => (
+                <EpisodeStyled
+                  key={i}
+                  style={{ backgroundColor: i % 2 ? 'white' : '#f6f6f6' }}
+                >
+                  <p
+                    className='title'
+                    onClick={() =>
+                      goToDetails(item)
+                    }
+                  >
+                    {item.title}
+                  </p>
+                  <p className='date'>{dateParser(item.pubDate)} </p>
+                  <p className='duration'> {item.itunes.duration}</p>
+                </EpisodeStyled>
+              ))}
+            </PodcastsList>
+          </TableStyled>
+        </EpisodesListWrapperStyled>
+      )}
+    </>
   )
 }
 
