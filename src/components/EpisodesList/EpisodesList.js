@@ -48,14 +48,17 @@ const EpisodesListComponent = (props) => {
                     {item.title}
                   </p>
                   <p className='date'>{dateParser(item.pubDate)} </p>
-                  <p className='duration'>
-                    {' '}
-                    {item.itunes.duration.includes(':')
-                      ? item.itunes.duration
-                      : new Date(item.itunes.duration * 1000)
-                          .toUTCString()
-                          .match(/(\d\d:\d\d:\d\d)/)[0]}
-                  </p>
+                  {item.itunes.duration ? (
+                    <p className='duration'>
+                      {item.itunes.duration.includes(':')
+                        ? item.itunes.duration
+                        : new Date(item.itunes.duration * 1000)
+                            .toUTCString()
+                            .match(/(\d\d:\d\d:\d\d)/)[0]}
+                    </p>
+                  ) : (
+                    <p className='duration'>01:22</p>
+                  )}
                 </EpisodeStyled>
               ))}
             </PodcastsList>

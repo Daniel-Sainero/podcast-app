@@ -37,9 +37,13 @@ const PodcastDetail = () => {
               __html: DOMPurify.sanitize(podcast.content),
             }}
           ></AudioDescription>
-          <AudioStyled controls>
-            <source src={podcast.enclosure.url} type='audio/mpeg'></source>
-          </AudioStyled>
+          {podcast.enclosure ? (
+            <AudioStyled controls>
+              <source src={podcast.enclosure.url} type='audio/mpeg'></source>
+            </AudioStyled>
+          ) : (
+            <p> No audio</p>
+          )}
         </AudioWrapperStyled>
       </DetailWrapperStyled>
     )
