@@ -9,9 +9,9 @@ import {
 } from './home.styled'
 
 const Home = () => {
-  localStorage.clear()
+
   const podcastURI = 'https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json'
-  const { data } = useFetch(podcastURI)
+  const { data } = useFetch(podcastURI, 'home')
   const podcasts = data?.feed?.entry
   const [query, setQuery] = useState('')
 

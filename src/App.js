@@ -4,9 +4,12 @@ import Home from './views/home/home'
 import PodcastEpisodes from './views/episodes/podcast-episodes'
 import PodcastDetail from './views/detail/podcast-detail'
 import HeaderComponent from './components/Header/Header'
+import { LoadingProvider } from './context/loadingProvider'
+
 function App() {
   return (
     <Router>
+    <LoadingProvider>
       <HeaderComponent/>
       <Routes>
         <Route exact path='/' element={<Home />} />
@@ -17,6 +20,7 @@ function App() {
         />
         <Route path='*' element={<Home />} />
       </Routes>
+      </LoadingProvider>
     </Router>
   )
 }

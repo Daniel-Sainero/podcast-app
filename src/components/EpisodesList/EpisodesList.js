@@ -44,16 +44,18 @@ const EpisodesListComponent = (props) => {
                   key={i}
                   style={{ backgroundColor: i % 2 ? 'white' : '#f6f6f6' }}
                 >
-                  <p
-                    className='title'
-                    onClick={() =>
-                      goToDetails(item)
-                    }
-                  >
+                  <p className='title' onClick={() => goToDetails(item)}>
                     {item.title}
                   </p>
                   <p className='date'>{dateParser(item.pubDate)} </p>
-                  <p className='duration'> {item.itunes.duration}</p>
+                  <p className='duration'>
+                    {' '}
+                    {item.itunes.duration.includes(':')
+                      ? item.itunes.duration
+                      : new Date(item.itunes.duration * 1000)
+                          .toUTCString()
+                          .match(/(\d\d:\d\d:\d\d)/)[0]}
+                  </p>
                 </EpisodeStyled>
               ))}
             </PodcastsList>
