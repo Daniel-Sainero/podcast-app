@@ -39,7 +39,8 @@ const PodcastEpisodes = () => {
     if (data?.contents) {
       fetchData()
     }
-  }, [data, hide, show])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data])
 
   return (
     data?.contents && (
