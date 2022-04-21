@@ -9,7 +9,10 @@ import {
 } from './home.styled'
 
 const Home = () => {
-  const { data } = useFetch('https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json', 'home')
+  const { data } = useFetch(
+    'https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json',
+    'home'
+  )
   const podcasts = data?.feed?.entry
   const [query, setQuery] = useState('')
 

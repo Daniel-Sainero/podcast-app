@@ -10,7 +10,6 @@ export const TableStyled = styled.div`
   box-shadow: 0px 0px 3px #808080a8;
   padding: 1rem;
 `
-
 export const HeaderStyled = styled.div`
   display: flex;
   justify-content: flex-end;
@@ -33,7 +32,6 @@ export const HeaderStyled = styled.div`
     width: 6.5rem;
   }
 `
-
 export const TitleStyled = styled.p`
   box-shadow: 0px 0px 3px #808080a8;
   padding: 1rem;
@@ -42,12 +40,10 @@ export const TitleStyled = styled.p`
   font-weight: bolder;
   font-size: 1.5rem;
 `
-
 export const PodcastsList = styled.div`
   max-height: 600px;
   overflow-y: auto;
 `
-
 export const EpisodeStyled = styled.div`
   display: flex;
   justify-content: flex-end;

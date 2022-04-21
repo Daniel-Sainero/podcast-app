@@ -22,8 +22,7 @@ const PodcastDetail = () => {
     const podcast = JSON.parse(localStorage.getItem('podcast'))
     setPodcast(podcast)
     hide()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [hide, show])
 
   return (
     podcast && (

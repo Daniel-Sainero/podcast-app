@@ -6,7 +6,6 @@ export const InfoStyled = styled.div`
   width: 18rem;
   height: fit-content;
 `
-
 export const LogoWrapperStyled = styled.div`
   width: 100%;
   display: flex;
@@ -16,7 +15,6 @@ export const LogoWrapperStyled = styled.div`
     width: 8rem;
   }
 `
-
 export const TitleStyled = styled.p`
   border-top: 1px solid #d6d6d6;
   font-weight: bold;
@@ -24,7 +22,6 @@ export const TitleStyled = styled.p`
   padding-bottom: 0.2rem;
   margin: 0;
 `
-
 export const AuthorStyled = styled.p`
   margin: 0;
   padding-bottom: 2rem;

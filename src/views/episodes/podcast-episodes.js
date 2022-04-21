@@ -9,7 +9,6 @@ import LoadingContext from '../../context/loadingContext'
 
 const PodcastEpisodes = () => {
   const { show, hide } = useContext(LoadingContext)
-
   const params = useParams()
   const podcastURI = `https://itunes.apple.com/lookup?id=${params.podcastId}`
   const URI = `https://api.allorigins.win/get?url=${encodeURIComponent(
@@ -40,8 +39,7 @@ const PodcastEpisodes = () => {
     if (data?.contents) {
       fetchData()
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data])
+  }, [data, hide, show])
 
   return (
     data?.contents && (

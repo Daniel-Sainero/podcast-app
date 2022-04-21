@@ -1,12 +1,9 @@
-/* eslint-disable no-unused-vars */
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 
 const useFetch = (url, contentType) => {
   const [data, setData] = useState({})
   const [error, setError] = useState(null)
-
-
 
   useEffect(() => {
     const checkLastCall = () => {
@@ -36,16 +33,16 @@ const useFetch = (url, contentType) => {
       }
     }
 
-      if (checkLastCall() || contentType !== 'home') {  // if home last call was more than 24 hours ago
-        fetchData()
+    if (checkLastCall() || contentType !== 'home') {
+      fetchData()
+    } else {
+      const savedData = localStorage.getItem(contentType)
+      if (savedData) {
+        setData(JSON.parse(savedData))
       } else {
-        const savedData = localStorage.getItem(contentType)
-        if (savedData) {
-          setData(JSON.parse(savedData))
-        } else {
-          fetchData()
-        }
+        fetchData()
       }
+    }
   }, [url, contentType])
 
   return { data, error }
