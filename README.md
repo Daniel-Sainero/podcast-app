@@ -2,6 +2,12 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Important!!!
+
+This app uses node`s version v14.17.6, please upgrade your version if your node's version < v14.17.6
+
+### `npm install`
+
 ## Install dependencies
 
 ### `npm install`
